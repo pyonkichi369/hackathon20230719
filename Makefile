@@ -7,5 +7,7 @@ down:
 restart:
 	@make down
 	@make up
+ps:
+	docker compose ps
 app:
-	docker compose exec app bash
+	docker compose exec app /bin/sh
