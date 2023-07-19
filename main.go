@@ -25,7 +25,7 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 
 	for {
-		fmt.Print("ワイルドなご意見を入力してください。マイルドにします。: ")
+		fmt.Print("ワイルドなご意見を入力してください。: ")
 		opinion, _ := reader.ReadString('\n')
 		opinion = strings.TrimSpace(opinion)
 
@@ -33,7 +33,7 @@ func main() {
 			break
 		}
 
-		opinion += "「" + opinion + "」の言い方をマイルドにしてください。"
+		opinion += "「" + opinion + "」と言われました。とても傷ついています。慰めてください。"
 
 		messages = append(messages, Message{
 			Role:    "user",
@@ -41,7 +41,7 @@ func main() {
 		})
 
 		response := getOpenAIResponse(apiKey)
-		fmt.Println("【マイルド】" + response.Choices[0].Messages.Content)
+		fmt.Println("【慰め】" + response.Choices[0].Messages.Content)
 		print("\n")
 	}
 }
